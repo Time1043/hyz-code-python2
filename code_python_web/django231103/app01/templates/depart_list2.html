@@ -1,0 +1,76 @@
+{% extends 'layout2.html' %}
+
+{% block css %}
+    <style>
+        .panel {
+            margin-bottom: 80px; /* 根据分页控件的高度调整这个值 */
+        }
+
+        .fixed-pagination {
+            position: fixed;
+            bottom: 0;
+            left: 50%; /* 把左边位置设置为视窗的50% */
+            transform: translateX(-50%); /* 使用transform来移动分页条左边的50%，使其居中 */
+            background-color: transparent;
+            padding: 10px 0;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <!--按钮-->
+        <div style="margin-bottom: 10px">
+            <a class="btn btn-success" href="/depart/add/">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                新建部门
+            </a>
+        </div>
+
+        <!--表格 面板-->
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading"><font style="vertical-align: inherit;"><font
+                    style="vertical-align: inherit;">
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                部门列表
+            </font></font></div>
+
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">ID</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">名称</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">操作</font></font></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for depart in list_depart %}
+                        <tr>
+                            <th scope="row"><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">{{ depart.id }}</font></font></th>
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">{{ depart.title }}</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">
+                                <a class="btn btn-primary btn-xs" href="/depart/{{ depart.id }}/edit/">编辑</a>
+                                <a class="btn btn-danger btn-xs"
+                                   href="/depart/dlt/?nid={{ depart.id }}">删除</a>
+                            </font></font></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!--分页控件-->
+        <ul class="pagination">
+            {{ page_string }}
+        </ul>
+
+    </div>
+{% endblock %}
