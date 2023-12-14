@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # @Author  : yingzhu
 # @Time    : 2023/12/13 18:13
-# @File    ：demo3.py
+# @File    ：demo3HuaBan.py
 # @Function: 花瓣网  发送请求
 
 import requests
