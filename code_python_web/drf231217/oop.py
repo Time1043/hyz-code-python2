@@ -15,7 +15,7 @@ class HttpRequest(object):
         print('django的path_info')
 
 
-class Request(object):
+class DrfRequest(object):
     def __init__(self, req, xx):
         self._request = req
         self.xx = xx
@@ -27,12 +27,15 @@ class Request(object):
             return self.__getattribute__(attr)
 
 
-req = HttpRequest()
+req = HttpRequest()  # django
 req.method()
 req.path_info()
 
-request = Request(req, 11)
-print(request.xx)
-print(request._request)
+request = DrfRequest(req, 11)  # drf
+print(request)  # drf的request
+print(request._request)  # django的request
 request._request.method()
 request._request.path_info()
+
+print(request.method())  # drf没有method成员 就去django中找
+print(request.path_info())  # drf没有method成员 就去django中找
