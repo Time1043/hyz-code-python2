@@ -89,10 +89,10 @@ def read_urls_from_file(file_path):
 
 if __name__ == '__main__':
     # Example usage
-    file_path = r"D:\code\hyz-code-python2\code_python_bg100\d050\paprt_url231130.txt"
+    file_path = r"D:\code\hyz-code-python2\code_python_bg100\d050\Transformer.txt"
     url_list = read_urls_from_file(file_path)
 
-    destination_folder = r"C:\Users\huangyingzhu\Desktop\paper"
+    destination_folder = r"C:\Users\huangyingzhu\Desktop\Transformer"
 
     # Calling the function
     downloaded_files = download_pdfs(url_list, destination_folder)
