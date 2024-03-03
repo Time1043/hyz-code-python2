@@ -1,0 +1,101 @@
+{% extends 'layout.html' %}
+
+{% block css %}
+    <style>
+        .panel {
+            margin-bottom: 80px; /* 根据分页控件的高度调整这个值 */
+        }
+
+        .fixed-pagination {
+            position: fixed;
+            bottom: 0;
+            left: 50%; /* 把左边位置设置为视窗的50% */
+            transform: translateX(-50%); /* 使用transform来移动分页条左边的50%，使其居中 */
+            background-color: transparent;
+            padding: 10px 0;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <!--按钮-->
+        <div style="margin-bottom: 10px">
+            <a class="btn btn-success" href="/user/add/">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                新建用户
+            </a>
+        </div>
+
+        <!--表格 面板-->
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading"><font style="vertical-align: inherit;"><font
+                    style="vertical-align: inherit;">
+                <span class="glyphicon glyphicon-th-list" aria-hidden="true"></span>
+                用户列表
+            </font></font></div>
+
+            <!-- Table -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">ID</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">姓名</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">密码</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">年龄</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">账户余额</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">入职时间</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">性别</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">所在部门</font></font></th>
+                        <th><font style="vertical-align: inherit;"><font
+                                style="vertical-align: inherit;">操作</font></font></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in list_user %}
+                        <tr>
+                            <th scope="row"><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">{{ user.id }}</font></font></th>
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">{{ user.name }}</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">{{ user.password }}</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">{{ user.age }}</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">{{ user.account }}</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">{{ user.create_time|date:'Y-m-d h:i:s' }}</font></font>
+                            </td>
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">{{ user.get_gender_display }}</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">{{ user.depart.title }}</font></font></td>
+                            <td><font style="vertical-align: inherit;"><font
+                                    style="vertical-align: inherit;">
+                                <a class="btn btn-primary btn-xs" href="/user/{{ user.id }}/edit/">编辑</a>
+                                <a class="btn btn-primary btn-xs" href="/user/model/form/{{ user.id }}/edit/">编辑mf</a>
+                                <a class="btn btn-danger btn-xs"
+                                   href="/user/dlt/?nid={{ user.id }}">删除</a>
+                            </font></font></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <ul class="pagination">
+            {{ page_string }}
+        </ul>
+
+    </div>
+{% endblock %}

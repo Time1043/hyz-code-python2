@@ -1,0 +1,48 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>用户列表</title>
+        <link rel="stylesheet" href="{% static 'plugins/bootstrap-3.4.1/css/bootstrap.css' %}">
+    </head>
+
+
+    <body>
+        <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+        <script src="{% static 'plugins/bootstrap-3.4.1/js/bootstrap.js' %}"></script>
+        <h2>用户列表hhhh</h2>
+        <img src="{% static 'img/threebody65.jpg' %}">
+        <table>
+            <thead>
+                <tr>
+                    <th>name</th>
+                    <th>age</th>
+                    <th>sex</th>
+                    <th>introduce</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>张三</td>
+                    <td>25</td>
+                    <td>男</td>
+                    <td>我是张三，来自北京。</td>
+                </tr>
+                <tr>
+                    <td>李四</td>
+                    <td>28</td>
+                    <td>女</td>
+                    <td>我是李四，来自上海。</td>
+                </tr>
+                <tr>
+                    <td>王五</td>
+                    <td>30</td>
+                    <td>男</td>
+                    <td>我是王五，来自广州。</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>
