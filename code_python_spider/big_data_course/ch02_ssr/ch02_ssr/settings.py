@@ -12,7 +12,8 @@ BOT_NAME = "ch02_ssr"
 SPIDER_MODULES = ["ch02_ssr.spiders"]
 NEWSPIDER_MODULE = "ch02_ssr.spiders"
 
-FEED_EXPORT_FIELDS = ["title", "rank", "label", "area", "time", "duration", ]
+FEED_EXPORT_FIELDS = ["title", "rank", "label", "area", "time", "duration",
+                      "introduction", "director", "actor", "role", ]
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 # USER_AGENT = "ch02_ssr (+http://www.yourdomain.com)"
@@ -63,9 +64,9 @@ ROBOTSTXT_OBEY = True
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    "ch02_ssr.pipelines.Ch02SsrPipeline": 300,
-# }
+ITEM_PIPELINES = {
+   "ch02_ssr.pipelines.Ch02SsrPipeline": 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html

@@ -8,3 +8,7 @@ class MovieItem(scrapy.Item):
     area = scrapy.Field()
     time = scrapy.Field()
     duration = scrapy.Field()
+    introduction = scrapy.Field()
+    director = scrapy.Field()
+    actor = scrapy.Field()
+    role = scrapy.Field()
